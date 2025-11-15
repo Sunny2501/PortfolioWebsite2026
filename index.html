@@ -151,7 +151,7 @@
     <section id="about" class="border-t border-slate-800/80 bg-slate-950/60">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] gap-10 items-start">
-          <!-- About text & cards -->
+          <!-- About text & pillars -->
           <div>
             <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50 mb-3">About</h2>
             <p class="text-sm text-slate-300/90 mb-5">
@@ -175,45 +175,119 @@
               </div>
             </div>
           </div>
-          <!-- Journey / timeline (years only, touching center line) -->
-          <div class="relative text-xs text-slate-300">
-            <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500 mb-4 text-center">Journey</p>
-            <div class="absolute left-1/2 -translate-x-1/2 top-6 bottom-3 hidden sm:block" aria-hidden="true">
-              <div class="w-px h-full bg-gradient-to-b from-sky-500/40 via-slate-600/60 to-emerald-400/40"></div>
+          <!-- Interactive My Journey map -->
+          <div class="mt-8 md:mt-0">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="text-sm font-semibold tracking-tight text-slate-50">My Journey</h3>
+              <p class="text-[11px] text-slate-500">2021 – 2025</p>
             </div>
-            <div class="space-y-3 sm:space-y-4">
-              <!-- Step: Now (top, left of center line) -->
-              <div class="relative flex sm:justify-start">
-                <div class="flex items-center">
-                  <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2 max-w-xs">
-                    <p class="text-[11px] text-sky-300 font-medium">Now</p>
+            <div class="relative rounded-3xl border border-slate-800 bg-slate-900/60 px-4 py-8 sm:px-6 sm:py-9 overflow-hidden min-h-[320px]">
+              <!-- Glowing path -->
+              <svg
+                viewBox="0 0 240 360"
+                class="pointer-events-none absolute inset-0 h-full w-full opacity-60"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#22c55e" />
+                    <stop offset="40%" stop-color="#22d3ee" />
+                    <stop offset="100%" stop-color="#a855f7" />
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  id="journeyPath"
+                  d="M 40 330 C 90 300, 80 250, 140 220 C 200 190, 140 150, 190 110 C 230 80, 170 50, 210 30"
+                  fill="none"
+                  stroke="url(#journeyGradient)"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  class="journey-path"
+                  filter="url(#glow)"
+                />
+              </svg>
+
+              <!-- Milestone markers -->
+              <div class="relative space-y-4 text-xs text-slate-200">
+                <!-- July 2025 - Present -->
+                <button
+                  class="journey-node group flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-700/70 bg-slate-950/50 px-3 py-2 text-left hover:border-emerald-400/80 hover:bg-slate-900/80 transition"
+                  data-year="July 2025 - Present"
+                  data-label="Advance AI"
+                  data-description="Working on advanced AI projects and systems."
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(34,197,94,0.8)]"></span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] text-slate-400 uppercase">JUL 2025 – PRESENT</span>
                   </div>
-                </div>
-              </div>
-              <!-- Step: 2023 – 2024 (right, touching center line) -->
-              <div class="relative flex sm:justify-end">
-                <div class="flex items-center">
-                  <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2 max-w-xs">
-                    <p class="text-[11px] text-sky-300 font-medium">2023 – 2024</p>
+                  <span class="text-[11px] text-slate-300 group-hover:text-emerald-300">Advance AI</span>
+                </button>
+                <!-- Jan 2025 - July 2025 -->
+                <button
+                  class="journey-node group flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-700/70 bg-slate-950/50 px-3 py-2 text-left hover:border-sky-400/80 hover:bg-slate-900/80 transition"
+                  data-year="Jan 2025 - July 2025"
+                  data-label="Data Analysis"
+                  data-description="Hands-on data analysis with Python, SQL, and BI tools."
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)]"></span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] text-slate-400 uppercase">JAN 2025 – JUL 2025</span>
                   </div>
-                </div>
-              </div>
-              <!-- Step: 2021 – 2022 (left, touching center line) -->
-              <div class="relative flex sm:justify-start">
-                <div class="flex items-center">
-                  <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2 max-w-xs">
-                    <p class="text-[11px] text-sky-300 font-medium">2021 – 2022</p>
+                  <span class="text-[11px] text-slate-300 group-hover:text-sky-300">Data Analysis</span>
+                </button>
+                <!-- 2024 - 2025 -->
+                <button
+                  class="journey-node group flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-700/70 bg-slate-950/50 px-3 py-2 text-left hover:border-cyan-400/80 hover:bg-slate-900/80 transition"
+                  data-year="2024 - 2025"
+                  data-label="No-code Web Dev"
+                  data-description="Building no-code/low-code web experiences."
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] text-slate-400 uppercase">2024 – 2025</span>
                   </div>
-                </div>
-              </div>
-              <!-- Step: 2019 – 2020 (right, touching center line) -->
-              <div class="relative flex sm:justify-end">
-                <div class="flex items-center">
-                  <div class="rounded-2xl border border-slate-800 bg-slate-900/70 px-3 py-2 max-w-xs">
-                    <p class="text-[11px] text-sky-300 font-medium">2019 – 2020</p>
+                  <span class="text-[11px] text-slate-300 group-hover:text-cyan-300">No code Web dev</span>
+                </button>
+                <!-- 2023 - 2024 -->
+                <button
+                  class="journey-node group flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-700/70 bg-slate-950/50 px-3 py-2 text-left hover:border-purple-400/80 hover:bg-slate-900/80 transition"
+                  data-year="2023 - 2024"
+                  data-label="Frontend Web Dev"
+                  data-description="Focused on frontend web development."
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] text-slate-400 uppercase">2023 – 2024</span>
                   </div>
-                </div>
+                  <span class="text-[11px] text-slate-300 group-hover:text-purple-300">Frontend Web Dev</span>
+                </button>
+                <!-- 2022 - 2023 -->
+                <button
+                  class="journey-node group flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-700/70 bg-slate-950/50 px-3 py-2 text-left hover:border-amber-400/80 hover:bg-slate-900/80 transition"
+                  data-year="2022 - 2023"
+                  data-label="C/C++ & Java"
+                  data-description="Strengthening programming fundamentals in C/C++ and Java."
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.8)]"></span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] text-slate-400 uppercase">2022 – 2023</span>
+                  </div>
+                  <span class="text-[11px] text-slate-300 group-hover:text-amber-300">C/C++, Java</span>
+                </button>
               </div>
+
+              <!-- Tooltip for journey nodes -->
+              <div
+                id="journeyTooltip"
+                class="pointer-events-none invisible fixed z-50 rounded-xl border border-slate-700 bg-slate-900/95 px-3 py-1.5 text-[11px] text-slate-100 shadow-lg shadow-slate-900/70 transition-opacity duration-150"
+              ></div>
             </div>
           </div>
         </div>
@@ -238,12 +312,46 @@
                 <span class="text-sky-300">30+ built</span>
               </li>
               <li class="flex items-center justify-between gap-4">
-                <span>n8n workflow automation</span>
+                <span>n8n workflow</span>
                 <span class="text-sky-300">Automation</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>RAG</span>
+                <span class="text-sky-300">Retrieval</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>Lovable</span>
+                <span class="text-sky-300">AI tools</span>
               </li>
               <li class="flex items-center justify-between gap-4">
                 <span>Python for AI</span>
                 <span class="text-sky-300">Core</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Programming, Web & Tools -->
+          <div class="w-full max-w-xs rounded-3xl border border-slate-800 bg-slate-900/80 p-4">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500 mb-3 text-center">Programming & Tools</p>
+            <ul class="space-y-2">
+              <li class="flex items-center justify-between gap-4">
+                <span>JavaScript, HTML, CSS</span>
+                <span class="text-sky-300">Web</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>React</span>
+                <span class="text-sky-300">Frontend</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>C / C++</span>
+                <span class="text-sky-300">Fundamentals</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>Git & GitHub</span>
+                <span class="text-sky-300">Collaboration</span>
+              </li>
+              <li class="flex items-center justify-between gap-4">
+                <span>Figma</span>
+                <span class="text-sky-300">Design handoff</span>
               </li>
             </ul>
           </div>
@@ -265,24 +373,6 @@
               </li>
             </ul>
           </div>
-          <!-- Programming, Web & Tools -->
-          <div class="w-full max-w-xs rounded-3xl border border-slate-800 bg-slate-900/80 p-4">
-            <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500 mb-3 text-center">Programming & Tools</p>
-            <ul class="space-y-2">
-              <li class="flex items-center justify-between gap-4">
-                <span>JavaScript, HTML, CSS</span>
-                <span class="text-sky-300">Web</span>
-              </li>
-              <li class="flex items-center justify-between gap-4">
-                <span>C / C++</span>
-                <span class="text-sky-300">Fundamentals</span>
-              </li>
-              <li class="flex items-center justify-between gap-4">
-                <span>Git & GitHub · Figma</span>
-                <span class="text-sky-300">Collaboration</span>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
@@ -301,9 +391,9 @@
         </div>
         <div id="projectFilters" class="mb-6 flex flex-wrap gap-2 text-[11px] text-slate-300">
           <button data-filter="all" class="filter-pill px-3 py-1 rounded-full border border-sky-500 bg-sky-500/10">All</button>
-          <button data-filter="web" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">Web Apps</button>
-          <button data-filter="landing" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">Landing Pages</button>
-          <button data-filter="ui" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">UI Experiments</button>
+          <button data-filter="web" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">AI Agents</button>
+          <button data-filter="landing" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">Web Apps</button>
+          <button data-filter="ui" class="filter-pill px-3 py-1 rounded-full border border-slate-700 hover:border-sky-500 hover:text-sky-300">Power Bi Dashboards</button>
         </div>
         <div class="grid md:grid-cols-2 gap-6 justify-items-center" id="projectsGrid">
           <!-- Project Card 1 -->
